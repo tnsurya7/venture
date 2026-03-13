@@ -6,7 +6,7 @@ A comprehensive web application for managing venture debt fund applications thro
 
 ```
 ┌─────────────────┐    HTTP/REST    ┌─────────────────┐
-│   Frontend      │ ◄──────────────► │   Backend       │
+│   Frontend      │ ◄──────────────►│   Backend       │
 │   React + TS    │                 │   Spring Boot   │
 │   Port: 8080    │                 │   Port: 8081    │
 └─────────────────┘                 └─────────────────┘
