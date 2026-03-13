@@ -252,12 +252,23 @@ export const api = createApi({
     getApplicationById: builder.query<Application, string>({
       queryFn: async (id) => {
         await delay(150);
-        const app = DB_APPLICATIONS.find((a) => a.id === id);
-        if (!app) return { error: { status: 404, data: "Application not found" } };
-        // Backfill legacy records
-        if (!app.workflowStep) app.workflowStep = "prelim_submitted";
-        if (!app.auditTrail) app.auditTrail = [];
-        return { data: { ...app } };
+        const appIndex = DB_APPLICATIONS.findIndex((a) => a.id === id);
+        if (appIndex === -1) return { error: { status: 404, data: "Application not found" } };
+        
+        const app = DB_APPLICATIONS[appIndex];
+        // Backfill legacy records - create a copy to avoid read-only issues
+        let updatedApp = { ...app };
+        if (!updatedApp.workflowStep) {
+          updatedApp = deepCopy(app);
+          updatedApp.workflowStep = "prelim_submitted";
+          DB_APPLICATIONS[appIndex] = updatedApp;
+        }
+        if (!updatedApp.auditTrail) {
+          if (updatedApp === app) updatedApp = deepCopy(app);
+          updatedApp.auditTrail = [];
+          DB_APPLICATIONS[appIndex] = updatedApp;
+        }
+        return { data: { ...updatedApp } };
       },
       providesTags: (result, error, id) => [{ type: "Applications", id }],
     }),
@@ -294,13 +305,18 @@ export const api = createApi({
     updatePrelimData: builder.mutation<void, { id: string; prelimData: any }>({
       queryFn: async ({ id, prelimData }) => {
         await delay(200);
-        const app = DB_APPLICATIONS.find((a) => a.id === id);
-        if (!app) return { error: { status: 404, data: "Application not found" } };
-        app.prelimData = prelimData;
-        app.status = "submitted";
-        app.workflowStep = "prelim_submitted";
-        app.comments = {};
-        app.updatedAt = new Date().toISOString();
+        const appIndex = DB_APPLICATIONS.findIndex((a) => a.id === id);
+        if (appIndex === -1) return { error: { status: 404, data: "Application not found" } };
+        
+        const app = DB_APPLICATIONS[appIndex];
+        const updatedApp = deepCopy(app);
+        updatedApp.prelimData = prelimData;
+        updatedApp.status = "submitted";
+        updatedApp.workflowStep = "prelim_submitted";
+        updatedApp.comments = {};
+        updatedApp.updatedAt = new Date().toISOString();
+        
+        DB_APPLICATIONS[appIndex] = updatedApp;
         console.log("[Mock API] updatePrelimData:", id);
         return { data: undefined };
       },
@@ -310,14 +326,19 @@ export const api = createApi({
     submitDetailedApplication: builder.mutation<void, { appId: string; detailedData: any }>({
       queryFn: async ({ appId, detailedData }) => {
         await delay(300);
-        const app = DB_APPLICATIONS.find((a) => a.id === appId);
-        if (!app) return { error: { status: 404, data: "Application not found" } };
-        app.stage = "detailed";
-        app.status = "submitted";
-        app.workflowStep = "detailed_maker_review";
-        app.detailedData = detailedData;
-        app.comments = {};
-        app.updatedAt = new Date().toISOString();
+        const appIndex = DB_APPLICATIONS.findIndex((a) => a.id === appId);
+        if (appIndex === -1) return { error: { status: 404, data: "Application not found" } };
+        
+        const app = DB_APPLICATIONS[appIndex];
+        const updatedApp = deepCopy(app);
+        updatedApp.stage = "detailed";
+        updatedApp.status = "submitted";
+        updatedApp.workflowStep = "detailed_maker_review";
+        updatedApp.detailedData = detailedData;
+        updatedApp.comments = {};
+        updatedApp.updatedAt = new Date().toISOString();
+        
+        DB_APPLICATIONS[appIndex] = updatedApp;
         console.log("[Mock API] submitDetailedApplication:", appId);
         return { data: undefined };
       },
@@ -340,9 +361,10 @@ export const api = createApi({
     >({
       queryFn: async ({ id, action, actor, comment, ...opts }) => {
         await delay(300);
-        const app = DB_APPLICATIONS.find((a) => a.id === id);
-        if (!app) return { data: { success: false, error: "Application not found." } };
-
+        const appIndex = DB_APPLICATIONS.findIndex((a) => a.id === id);
+        if (appIndex === -1) return { data: { success: false, error: "Application not found." } };
+        
+        const app = DB_APPLICATIONS[appIndex];
         if (!isValidTransition(app.workflowStep, action)) {
           return { data: { success: false, error: `Invalid transition: "${action}" from "${app.workflowStep}".` } };
         }
@@ -350,22 +372,24 @@ export const api = createApi({
         const nextStep = actionTransitions[action];
         if (!nextStep) return { data: { success: false, error: "Unknown action." } };
 
-        app.workflowStep = nextStep;
-        app.updatedAt = new Date().toISOString();
+        // Create a deep copy to avoid read-only property issues
+        const updatedApp = deepCopy(app);
+        updatedApp.workflowStep = nextStep;
+        updatedApp.updatedAt = new Date().toISOString();
 
-        if (opts.assignedChecker) app.assignedChecker = opts.assignedChecker;
-        if (opts.assignedConvenor) app.assignedConvenor = opts.assignedConvenor;
-        if (opts.assignedApprover) app.assignedApprover = opts.assignedApprover;
-        if (opts.recommendedOutcome) app.recommendedOutcome = opts.recommendedOutcome;
+        if (opts.assignedChecker) updatedApp.assignedChecker = opts.assignedChecker;
+        if (opts.assignedConvenor) updatedApp.assignedConvenor = opts.assignedConvenor;
+        if (opts.assignedApprover) updatedApp.assignedApprover = opts.assignedApprover;
+        if (opts.recommendedOutcome) updatedApp.recommendedOutcome = opts.recommendedOutcome;
         if (opts.meetingId) {
-          if (action.startsWith("icvd_")) app.icvdMeetingId = opts.meetingId;
-          if (action.startsWith("ccic_")) app.ccicMeetingId = opts.meetingId;
+          if (action.startsWith("icvd_")) updatedApp.icvdMeetingId = opts.meetingId;
+          if (action.startsWith("ccic_")) updatedApp.ccicMeetingId = opts.meetingId;
         }
 
-        deriveStatusAndStage(app, action);
+        deriveStatusAndStage(updatedApp, action);
 
-        if (!app.auditTrail) app.auditTrail = [];
-        app.auditTrail.push({
+        if (!updatedApp.auditTrail) updatedApp.auditTrail = [];
+        updatedApp.auditTrail.push({
           actorRole: actor.role,
           actorId: actor.id,
           actionType: action,
@@ -374,11 +398,14 @@ export const api = createApi({
         });
 
         if (comment) {
-          app.comments = {
-            ...app.comments,
+          updatedApp.comments = {
+            ...updatedApp.comments,
             _global: { needsChange: action.startsWith("revert"), comment },
           };
         }
+
+        // Replace the application in the array
+        DB_APPLICATIONS[appIndex] = updatedApp;
 
         console.log("[Mock API] applyWorkflowAction:", { id, action, nextStep });
         return { data: { success: true } };

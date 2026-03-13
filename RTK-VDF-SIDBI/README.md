@@ -31,11 +31,14 @@ A modern React application for the Venture Debt Fund (VDF) portal built with Typ
    ```
 
 4. **Access the application:**
-   - Frontend: http://localhost:8080
+   - Frontend: http://localhost:5173 (Vite default port)
    - The application will automatically open in your default browser
 
-### Demo Users (Password: "password")
+### Demo Users
+The application includes mock authentication for testing:
 - `applicant@demo.com` - Applicant role
+- `alpha@techcorp.in` - Applicant (TechCorp)
+- `gamma@manufacturing.in` - Applicant (Manufacturing)
 - `sidbi-maker@demo.com` - SIDBI Maker
 - `sidbi-checker@demo.com` - SIDBI Checker
 - `sidbi-convenor@demo.com` - SIDBI Convenor
@@ -47,76 +50,187 @@ A modern React application for the Venture Debt Fund (VDF) portal built with Typ
 
 ### Core Technologies
 - **React 18.3.1** - Modern React with hooks and concurrent features
-- **TypeScript 5.6.2** - Type-safe JavaScript for better development experience
-- **Vite 5.4.19** - Fast build tool and development server
+- **TypeScript 5.8.3** - Type-safe JavaScript for better development experience
+- **Vite 5.4.19** - Fast build tool and development server with HMR
 
 ### State Management
-- **Redux Toolkit (RTK) 2.3.0** - Predictable state container with modern Redux patterns
-- **RTK Query** - Powerful data fetching and caching solution
-- **React Hook Form 7.54.0** - Performant forms with easy validation
-- **Zod 3.23.8** - TypeScript-first schema validation
+- **Redux Toolkit (RTK) 2.11.2** - Predictable state container with modern Redux patterns
+- **RTK Query** - Powerful data fetching and caching solution with automatic cache invalidation
+- **React Redux 9.2.0** - Official React bindings for Redux
+- **React Hook Form 7.61.1** - Performant forms with easy validation
+- **Zod 3.25.76** - TypeScript-first schema validation
 
 ### UI Framework & Styling
-- **shadcn/ui** - High-quality, accessible component library
+- **shadcn/ui** - High-quality, accessible component library built on Radix UI
 - **Tailwind CSS 3.4.17** - Utility-first CSS framework
-- **Radix UI** - Unstyled, accessible UI primitives
-- **Lucide React 0.468.0** - Beautiful & consistent icon library
-- **class-variance-authority** - Component variant management
+- **Radix UI** - Unstyled, accessible UI primitives (40+ components)
+- **Lucide React 0.462.0** - Beautiful & consistent icon library (1000+ icons)
+- **class-variance-authority 0.7.1** - Component variant management
+- **tailwind-merge 2.6.0** - Merge Tailwind CSS classes without conflicts
+- **tailwindcss-animate 1.0.7** - Animation utilities for Tailwind
 
 ### Routing & Navigation
-- **React Router DOM 6.28.0** - Declarative routing for React applications
+- **React Router DOM 6.30.1** - Declarative routing for React applications
 
-### Utilities
-- **date-fns 4.1.0** - Date manipulation
+### UI Components & Utilities
+- **date-fns 3.6.0** - Modern date manipulation library
 - **clsx 2.1.1** - Conditional className utility
+- **cmdk 1.1.1** - Command menu component
+- **sonner 1.7.4** - Toast notifications
+- **recharts 2.15.4** - Composable charting library
+- **embla-carousel-react 8.6.0** - Carousel component
+- **react-day-picker 8.10.1** - Date picker component
+- **vaul 0.9.9** - Drawer component
+- **next-themes 0.3.0** - Theme management
 
 ### Development Tools
-- **ESLint** - Code linting and quality enforcement
-- **TypeScript ESLint** - TypeScript-specific linting rules
-- **Vitest** - Fast unit testing framework
-- **PostCSS** - CSS processing and optimization
+- **ESLint 9.32.0** - Code linting and quality enforcement
+- **TypeScript ESLint 8.38.0** - TypeScript-specific linting rules
+- **Vitest 3.2.4** - Fast unit testing framework
+- **@testing-library/react 16.0.0** - React component testing utilities
+- **@testing-library/jest-dom 6.6.0** - Custom Jest matchers for DOM
+- **PostCSS 8.5.6** - CSS processing and optimization
+- **Autoprefixer 10.4.21** - Automatic vendor prefixing
 
-## 📁 Project Structure
+## 📁 Complete Project Structure
 
 ```
 RTK-VDF-SIDBI/
-├── public/                     # Static assets
-│   ├── application-fields.json # Form field configurations
+├── .lovable/                   # Lovable platform configuration
+│   └── plan.md                # Project plan and specifications
+├── public/                     # Static assets served directly
+│   ├── application-fields.json # Dynamic form field configurations
 │   ├── favicon.ico            # Application favicon
+│   ├── placeholder.svg        # Placeholder image
 │   └── robots.txt             # SEO robots file
-├── src/
+├── src/                       # Source code
+│   ├── assets/                # Static assets (images, fonts)
+│   │   └── sidbi-logo.png    # SIDBI logo image
 │   ├── components/            # Reusable UI components
-│   │   ├── ui/               # shadcn/ui base components
-│   │   ├── layout/           # Layout components (headers, footers)
+│   │   ├── ui/               # shadcn/ui base components (60+ files)
+│   │   │   ├── accordion.tsx
+│   │   │   ├── alert-dialog.tsx
+│   │   │   ├── alert.tsx
+│   │   │   ├── aspect-ratio.tsx
+│   │   │   ├── avatar.tsx
+│   │   │   ├── badge.tsx
+│   │   │   ├── breadcrumb.tsx
+│   │   │   ├── button.tsx
+│   │   │   ├── calendar.tsx
+│   │   │   ├── card.tsx
+│   │   │   ├── carousel.tsx
+│   │   │   ├── chart.tsx
+│   │   │   ├── checkbox.tsx
+│   │   │   ├── collapsible.tsx
+│   │   │   ├── command.tsx
+│   │   │   ├── context-menu.tsx
+│   │   │   ├── dialog.tsx
+│   │   │   ├── drawer.tsx
+│   │   │   ├── dropdown-menu.tsx
+│   │   │   ├── form.tsx
+│   │   │   ├── hover-card.tsx
+│   │   │   ├── input-otp.tsx
+│   │   │   ├── input.tsx
+│   │   │   ├── label.tsx
+│   │   │   ├── menubar.tsx
+│   │   │   ├── navigation-menu.tsx
+│   │   │   ├── pagination.tsx
+│   │   │   ├── popover.tsx
+│   │   │   ├── progress.tsx
+│   │   │   ├── radio-group.tsx
+│   │   │   ├── resizable.tsx
+│   │   │   ├── scroll-area.tsx
+│   │   │   ├── select.tsx
+│   │   │   ├── separator.tsx
+│   │   │   ├── sheet.tsx
+│   │   │   ├── sidebar.tsx
+│   │   │   ├── skeleton.tsx
+│   │   │   ├── slider.tsx
+│   │   │   ├── sonner.tsx
+│   │   │   ├── switch.tsx
+│   │   │   ├── table.tsx
+│   │   │   ├── tabs.tsx
+│   │   │   ├── textarea.tsx
+│   │   │   ├── toast.tsx
+│   │   │   ├── toaster.tsx
+│   │   │   ├── toggle-group.tsx
+│   │   │   ├── toggle.tsx
+│   │   │   ├── tooltip.tsx
+│   │   │   └── use-toast.ts
+│   │   ├── layout/           # Layout components
+│   │   │   ├── AppLayout.tsx      # Main application layout wrapper
+│   │   │   ├── GovFooter.tsx      # Government-style footer
+│   │   │   ├── GovHeader.tsx      # Government-style header
+│   │   │   ├── GovInternal.tsx    # Internal government layout
+│   │   │   └── PublicLayout.tsx   # Public-facing layout
 │   │   ├── dashboard/        # Dashboard-specific components
+│   │   │   └── ConsentsRequiredSection.tsx  # Consent management section
 │   │   ├── detailed-app/     # Detailed application form components
-│   │   └── review/           # Application review components
+│   │   │   ├── DetailedDataView.tsx        # View detailed application data
+│   │   │   ├── DocumentUploadSection.tsx   # Document upload interface
+│   │   │   ├── EligibilityCheck.tsx        # Eligibility verification
+│   │   │   ├── FacilitiesApplicant.tsx     # Applicant facilities form
+│   │   │   ├── FacilitiesAssociate.tsx     # Associate facilities form
+│   │   │   ├── SupportingDocuments.tsx     # Supporting documents upload
+│   │   │   └── UnitEconomicsGrid.tsx       # Unit economics data grid
+│   │   ├── review/           # Application review components
+│   │   │   ├── DetailedReviewActions.tsx   # Detailed review action buttons
+│   │   │   ├── PrelimReviewActions.tsx     # Preliminary review actions
+│   │   │   └── StageComments.tsx           # Stage-specific comments
+│   │   ├── GovStatusBadge.tsx    # Government status badge component
+│   │   └── NavLink.tsx           # Navigation link component
 │   ├── pages/                # Page components (routes)
-│   │   ├── Login.tsx         # Authentication page
-│   │   ├── Register.tsx      # User registration
-│   │   ├── ApplicantDashboard.tsx    # Applicant dashboard
-│   │   ├── SidbiDashboard.tsx        # SIDBI staff dashboard
-│   │   ├── PrelimApplication.tsx     # Preliminary application form
-│   │   ├── DetailedApplication.tsx   # Detailed application form
-│   │   └── CommitteeMeeting.tsx      # Committee meeting interface
+│   │   ├── Index.tsx                    # Landing/home page
+│   │   ├── Login.tsx                    # Authentication page
+│   │   ├── Register.tsx                 # User registration
+│   │   ├── ApplicantDashboard.tsx       # Applicant dashboard
+│   │   ├── SidbiDashboard.tsx           # SIDBI staff dashboard
+│   │   ├── AdminRegistrations.tsx       # Admin registration management
+│   │   ├── PrelimApplication.tsx        # Preliminary application form
+│   │   ├── DetailedApplication.tsx      # Detailed application form
+│   │   ├── ApplicationView.tsx          # View application details
+│   │   ├── SidbiApplicationReview.tsx   # SIDBI review interface
+│   │   ├── CommitteeMeeting.tsx         # Committee meeting interface
+│   │   ├── CommitteeMeetingsList.tsx    # List of committee meetings
+│   │   ├── CommitteeReview.tsx          # Committee review page
+│   │   ├── PublicData.tsx               # Public data display
+│   │   └── NotFound.tsx                 # 404 error page
 │   ├── store/                # Redux store and API
-│   │   ├── index.ts          # Store configuration
-│   │   ├── api.ts            # RTK Query API definitions
+│   │   ├── index.ts          # Store configuration and setup
+│   │   ├── api.ts            # RTK Query API definitions with mock backend
 │   │   └── mockData.ts       # Development mock data
-│   ├── lib/                  # Utility libraries and stores
-│   │   ├── utils.ts          # General utility functions
-│   │   ├── authStore.ts      # Authentication state management
-│   │   ├── applicationStore.ts # Application state types
-│   │   └── registrationStore.ts # Registration state management
+│   ├── lib/                  # Utility libraries and type definitions
+│   │   ├── utils.ts                # General utility functions (cn, etc.)
+│   │   ├── authStore.ts            # Authentication types and interfaces
+│   │   ├── applicationStore.ts     # Application state types and workflow
+│   │   ├── registrationStore.ts    # Registration state types
+│   │   ├── meetingStore.ts         # Committee meeting types
+│   │   └── prelimConfig.ts         # Preliminary form configuration
 │   ├── hooks/                # Custom React hooks
-│   │   ├── use-mobile.tsx    # Mobile detection hook
+│   │   ├── use-mobile.tsx    # Mobile device detection hook
 │   │   └── use-toast.ts      # Toast notification hook
-│   └── assets/               # Static assets (images, fonts)
+│   ├── test/                 # Test files
+│   │   ├── setup.ts          # Test environment setup
+│   │   └── example.test.ts   # Example test file
+│   ├── App.tsx               # Root application component
+│   ├── App.css               # Application-level styles
+│   ├── main.tsx              # Application entry point
+│   ├── index.css             # Global styles and Tailwind imports
+│   └── vite-env.d.ts         # Vite environment type definitions
+├── .gitignore                # Git ignore rules
+├── bun.lockb                 # Bun lock file
+├── components.json           # shadcn/ui components configuration
+├── eslint.config.js          # ESLint configuration
+├── index.html                # HTML entry point
 ├── package.json              # Dependencies and scripts
+├── package-lock.json         # npm lock file
+├── postcss.config.js         # PostCSS configuration
 ├── tailwind.config.ts        # Tailwind CSS configuration
 ├── tsconfig.json             # TypeScript configuration
+├── tsconfig.app.json         # TypeScript app configuration
+├── tsconfig.node.json        # TypeScript Node configuration
 ├── vite.config.ts            # Vite build configuration
-└── vitest.config.ts          # Testing configuration
+└── vitest.config.ts          # Vitest testing configuration
 ```
 
 ## 🎯 Key Features
@@ -187,46 +301,44 @@ RTK-VDF-SIDBI/
 ## 🔧 Configuration
 
 ### Environment Variables
-Create a `.env.local` file in the root directory:
+Create a `.env.local` file in the root directory (optional):
 
 ```env
-# API Configuration
-VITE_API_BASE_URL=http://localhost:8081/api
+# Application Configuration
 VITE_APP_TITLE=VDF Portal
 VITE_APP_VERSION=1.0.0
 
 # Feature Flags
-VITE_ENABLE_MOCK_API=false
 VITE_ENABLE_DEBUG_MODE=false
 
-# File Upload Configuration
+# File Upload Configuration (for future use)
 VITE_MAX_FILE_SIZE=26214400  # 25MB in bytes
 VITE_ALLOWED_FILE_TYPES=.pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png
 ```
 
-### API Integration
-The application uses RTK Query for API communication:
+### Mock Data Architecture
+The application currently uses RTK Query with `fakeBaseQuery` for a fully functional mock backend:
 
 ```typescript
-// API Base Configuration
+// Mock Backend Configuration (src/store/api.ts)
 const api = createApi({
   reducerPath: 'api',
-  baseQuery: fetchBaseQuery({
-    baseUrl: '/api',
-    prepareHeaders: (headers, { getState }) => {
-      const token = selectAuthToken(getState());
-      if (token) {
-        headers.set('authorization', `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
-  tagTypes: ['Application', 'Registration', 'Meeting', 'User'],
+  baseQuery: fakeBaseQuery(),  // Mock backend - no real API calls
+  tagTypes: ['Auth', 'Applications', 'Registrations', 'Meetings'],
   endpoints: (builder) => ({
-    // API endpoints defined here
+    // All endpoints use in-memory mock data
+    // Simulates real API with delays and validation
   }),
 });
 ```
+
+The mock backend provides:
+- In-memory data storage (resets on page refresh)
+- Simulated async delays (200-300ms)
+- Full CRUD operations
+- Workflow state management
+- Authentication simulation
+- Automatic cache invalidation
 
 ## 📱 Responsive Design
 
@@ -271,7 +383,7 @@ npm run test:ui
 
 ### Development Build
 ```bash
-npm run dev          # Start development server
+npm run dev          # Start development server with HMR
 npm run build        # Create production build
 npm run preview      # Preview production build locally
 ```
@@ -282,32 +394,58 @@ npm run preview      # Preview production build locally
 npm run build
 
 # The build artifacts will be stored in the `dist/` directory
-# Deploy the contents of `dist/` to your web server
+# Deploy the contents of `dist/` to your web server or CDN
 ```
 
 ### Build Optimization
-- **Code Splitting**: Automatic route-based code splitting
-- **Tree Shaking**: Unused code elimination
+- **Code Splitting**: Automatic route-based code splitting with React.lazy
+- **Tree Shaking**: Unused code elimination via Vite
 - **Asset Optimization**: Image and CSS optimization
-- **Bundle Analysis**: Use `npm run build -- --analyze` to analyze bundle size
+- **Minification**: JavaScript and CSS minification
+- **Compression**: Gzip/Brotli compression support
 
 ### Deployment Options
 
 #### Static Hosting (Recommended)
+The application is a static SPA that can be deployed to any static hosting service:
+
 ```bash
 # Build for production
 npm run build
 
-# Deploy to Netlify, Vercel, or similar
+# Deploy to Netlify, Vercel, GitHub Pages, or similar
 # Upload the `dist/` folder contents
+```
+
+**Netlify Deployment:**
+```toml
+# netlify.toml
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+```
+
+**Vercel Deployment:**
+```json
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite"
+}
 ```
 
 #### Docker Deployment
 ```dockerfile
+# Multi-stage build for optimized image
 FROM node:18-alpine as builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci
 COPY . .
 RUN npm run build
 
@@ -316,6 +454,26 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
+```
+
+**nginx.conf for SPA routing:**
+```nginx
+server {
+    listen 80;
+    server_name localhost;
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Cache static assets
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+}
 ```
 
 ## 🔍 Performance Optimization
@@ -342,16 +500,16 @@ getTTFB(console.log);
 ## 🛡️ Security Features
 
 ### Authentication Security
-- **JWT Token Management**: Secure token storage and automatic refresh
+- **Mock Authentication**: Demo authentication system for development
+- **Session Management**: In-memory session storage
 - **Route Protection**: Protected routes based on authentication status
-- **Role-based Access**: Component-level access control
-- **Session Management**: Automatic logout on token expiration
+- **Role-based Access**: Component-level access control based on user roles
 
 ### Input Security
 - **Form Validation**: Client-side validation with Zod schemas
-- **XSS Prevention**: Sanitized user inputs
-- **File Upload Security**: File type and size validation
-- **CSRF Protection**: Cross-site request forgery protection
+- **XSS Prevention**: React's built-in XSS protection
+- **File Upload Validation**: File type and size validation (UI only)
+- **Input Sanitization**: Sanitized user inputs before display
 
 ## 🐛 Troubleshooting
 
@@ -370,21 +528,18 @@ npm run dev
 
 #### Build Issues
 ```bash
-# Type checking
-npm run type-check
-
 # Linting
 npm run lint
 
-# Fix linting issues
-npm run lint:fix
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-#### API Connection Issues
-1. Ensure backend server is running on port 8081
-2. Check CORS configuration in backend
-3. Verify API base URL in environment variables
-4. Check browser network tab for failed requests
+#### Mock Data Issues
+The application uses in-memory mock data that resets on page refresh. This is expected behavior for the current implementation. All data is stored in `src/store/mockData.ts` and managed by RTK Query's `fakeBaseQuery`.
 
 ### Debug Mode
 Enable debug mode in development:
@@ -394,9 +549,9 @@ VITE_ENABLE_DEBUG_MODE=true
 
 This will enable:
 - Redux DevTools integration
-- Detailed error logging
+- Detailed console logging
 - Performance monitoring
-- API request/response logging
+- Mock API request/response logging
 
 ## 📚 Additional Resources
 
