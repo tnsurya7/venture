@@ -1,6 +1,16 @@
-# VDF Frontend - React Application
+# VDF SIDBI Frontend 🚀
 
-A modern React application for the Venture Debt Fund (VDF) portal built with TypeScript, Redux Toolkit, and shadcn/ui components. This frontend provides a comprehensive interface for managing venture debt fund applications through SIDBI (Small Industries Development Bank of India).
+A modern React application for the Venture Debt Fund portal built with TypeScript, Redux Toolkit, and shadcn/ui components. Features comprehensive workflow management, real-time application tracking, and premium UI/UX for SIDBI's venture debt fund applications.
+
+![VDF Frontend](https://img.shields.io/badge/VDF-Frontend%20App-61DAFB?style=for-the-badge&logo=react)
+![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=flat-square&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.8.3-3178C6?style=flat-square&logo=typescript)
+![Vite](https://img.shields.io/badge/Vite-5.4.19-646CFF?style=flat-square&logo=vite)
+![Redux Toolkit](https://img.shields.io/badge/Redux%20Toolkit-2.11.2-764ABC?style=flat-square&logo=redux)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=flat-square&logo=tailwind-css)
+![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-Components-000000?style=flat-square&logo=shadcnui)
+![Radix UI](https://img.shields.io/badge/Radix-UI-161618?style=flat-square&logo=radix-ui)
+![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-7.61.1-EC5990?style=flat-square&logo=reacthookform)
 
 ## 🚀 Quick Start
 

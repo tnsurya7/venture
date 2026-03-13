@@ -1,4 +1,16 @@
-# VDF (Venture Debt Fund) - SIDBI Application Portal
+# VDF SIDBI Portal 🏦
+
+A comprehensive Venture Debt Fund application management system for SIDBI, featuring modern React frontend and robust Spring Boot backend with complete workflow automation.
+
+![VDF SIDBI](https://img.shields.io/badge/VDF-SIDBI%20Portal-blue?style=for-the-badge&logo=bank)
+![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=flat-square&logo=react)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.6-6DB33F?style=flat-square&logo=spring-boot)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.8.3-3178C6?style=flat-square&logo=typescript)
+![Java](https://img.shields.io/badge/Java-21-ED8B00?style=flat-square&logo=openjdk)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?style=flat-square&logo=postgresql)
+![Redux Toolkit](https://img.shields.io/badge/Redux%20Toolkit-2.11.2-764ABC?style=flat-square&logo=redux)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=flat-square&logo=tailwind-css)
+![Vite](https://img.shields.io/badge/Vite-5.4.19-646CFF?style=flat-square&logo=vite)
 
 A comprehensive web application for managing venture debt fund applications through SIDBI (Small Industries Development Bank of India). The system provides a complete workflow from application submission to approval with role-based access control.
 

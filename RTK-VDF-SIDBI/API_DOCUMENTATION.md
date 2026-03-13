@@ -1,4 +1,13 @@
-# VDF SIDBI Application API Documentation
+# VDF SIDBI API Documentation 📚
+
+Complete RTK Query API reference for the Venture Debt Fund SIDBI application management system. Features comprehensive endpoint documentation, Swagger/OpenAPI specification, and workflow automation guides.
+
+![API Documentation](https://img.shields.io/badge/API-Documentation-FF6B35?style=for-the-badge&logo=swagger)
+![RTK Query](https://img.shields.io/badge/RTK-Query-764ABC?style=flat-square&logo=redux)
+![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0.3-6BA539?style=flat-square&logo=openapi-initiative)
+![Swagger](https://img.shields.io/badge/Swagger-UI-85EA2D?style=flat-square&logo=swagger)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.8.3-3178C6?style=flat-square&logo=typescript)
+![Mock Backend](https://img.shields.io/badge/Mock-Backend-FF6B6B?style=flat-square&logo=json)
 
 ## Overview
 This document describes the RTK Query API endpoints for the Venture Debt Fund (VDF) SIDBI application management system. The API uses a mock backend with `fakeBaseQuery` for testing and development purposes.

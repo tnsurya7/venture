@@ -1,6 +1,16 @@
-# VDF Backend - Spring Boot API
+# VDF SIDBI Backend ⚙️
 
-A robust Spring Boot backend application for the Venture Debt Fund (VDF) portal providing comprehensive REST APIs for managing venture debt fund applications through SIDBI (Small Industries Development Bank of India).
+A robust Spring Boot backend application for the Venture Debt Fund portal providing comprehensive REST APIs, JWT authentication, and complete workflow management for SIDBI's venture debt fund applications.
+
+![VDF Backend](https://img.shields.io/badge/VDF-Backend%20API-6DB33F?style=for-the-badge&logo=spring-boot)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.6-6DB33F?style=flat-square&logo=spring-boot)
+![Java](https://img.shields.io/badge/Java-21-ED8B00?style=flat-square&logo=openjdk)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?style=flat-square&logo=postgresql)
+![Spring Security](https://img.shields.io/badge/Spring-Security-6DB33F?style=flat-square&logo=spring-security)
+![JWT](https://img.shields.io/badge/JWT-Authentication-000000?style=flat-square&logo=json-web-tokens)
+![Maven](https://img.shields.io/badge/Maven-3.8+-C71A36?style=flat-square&logo=apache-maven)
+![Swagger](https://img.shields.io/badge/Swagger-OpenAPI-85EA2D?style=flat-square&logo=swagger)
+![H2 Database](https://img.shields.io/badge/H2-Database-0078D4?style=flat-square&logo=h2)
 
 ## 🚀 Quick Start
 
@@ -11,7 +21,7 @@ A robust Spring Boot backend application for the Venture Debt Fund (VDF) portal 
 
 ### Installation & Setup
 
-1. **Clone the repository:**
+1. **Clone the repositor  y:**
    ```bash
    git clone https://github.com/tnsurya7/venture.git
    cd venture/vdf-backend
