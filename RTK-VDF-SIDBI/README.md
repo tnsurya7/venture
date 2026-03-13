@@ -555,7 +555,11 @@ This will enable:
 
 ## 📚 Additional Resources
 
-### Documentation
+### Project Documentation
+- **[API Documentation](./API_DOCUMENTATION.md)** - Complete RTK Query API reference with Swagger/OpenAPI specification
+- **[Mock Data Structure](./src/store/mockData.ts)** - Sample data used in development
+
+### External Documentation
 - [React Documentation](https://react.dev/)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 - [Redux Toolkit Documentation](https://redux-toolkit.js.org/)
